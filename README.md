@@ -23,5 +23,5 @@ Add this step in your workflow file
 - `directory`: Target directory
 - `filename`: Target file name
 - `domain_name`: Service domain name
-- `server_local_ip`: Service IP in local network
+- `server_local_ip`: Server IP in local network
 - `service_port`: Service port in local network
