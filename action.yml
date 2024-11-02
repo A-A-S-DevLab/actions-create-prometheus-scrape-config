@@ -22,6 +22,7 @@ runs:
     using: 'composite'
     steps:
         -   name: Check existing prometheus scrape config
+            shell: bash
             run: |
                 if test -f ${{inputs.directory}}/${{inputs.filename}}
                 then
@@ -32,16 +33,19 @@ runs:
 
         -   name: Delete old prometheus scrape config
             if: ${{env.LOCAL_CONFIG_IS_EXIST == 'true'}}
+            shell: bash
             run : |
                 cd ${{inputs.directory}}
                 [ -e ./${{inputs.filename}} ] && sudo rm -rf ./${{inputs.filename}}
 
         -   name: Create config directory
             if: ${{env.LOCAL_CONFIG_IS_EXIST == 'false'}}
+            shell: bash
             run : |
                 mkdir -p ${{inputs.directory}}
 
         -   name: Create new prometheus scrape config
+            shell: bash
             run : |
                 cd ${{inputs.directory}}
                 touch ./${{inputs.filename}}
